@@ -19,7 +19,7 @@ print(data.head())
 print("\nNombres de las columnas en el archivo:")
 print(data.columns)
 
-#Paso2:Limpiar los Datos
+#Paso2:Limpiar los datos
 print("\nValores nulos por columna:")
 print(data.isnull().sum())
 
@@ -29,7 +29,7 @@ data = data.dropna()
 print("\nTipos de datos por columna:")
 print(data.dtypes)
 
-#Paso 3:Análisis Exploratorio de Datos
+#Paso 3:Análisis exploratorio de datos
 
 #Gráfico de productos más vendidos
 plt.figure(figsize=(10, 6))
@@ -46,14 +46,14 @@ if 'Categoria' in data.columns:
     plt.title('Distribución de Ventas por Categoría')
     plt.show()
 
-#Paso4:Preprocesamiento de Texto 
+#Paso4:Preprocesamiento de texto 
 if 'Descripcion' in data.columns:
     # Limpieza y vectorización de texto
     vectorizer = TfidfVectorizer(stop_words='english')
     data['Descripcion'] = data['Descripcion'].fillna('')
     tfidf_matrix = vectorizer.fit_transform(data['Descripcion'])
 
-#Paso5:Implementación de un Modelo de Recomendación
+#Paso5:Implementación de un modelo de recomendación
 
 #Crear una matriz de usuario-producto
 user_product_matrix = data.pivot_table(index='Customer ID', columns='StockCode', values='Quantity', fill_value=0)
@@ -88,7 +88,7 @@ user_id = 12392.0
 print("\nRecomendaciones para el usuario", user_id)
 print(recomendar_productos(user_id=user_id))
 
-#Paso6:Creación de una Interfaz con Flask
+#Paso6:Creación de una interfaz con Flask
 app = Flask(__name__)
 
 @app.route('/')
